@@ -1,0 +1,25 @@
+{% extends "lib_app/base.html" %}
+
+{% block page_header %}
+  <div class="jumbotron">
+    <h1 class="display-3">Library</h1>
+    <p class="lead">
+        This web application creates an online catalog for a small local library
+        where users can add, delete and edit information about books and authors.
+    </p>
+
+    <div class="btn-group" role="group" aria-label="Basic outlined example">
+    <a class="btn btn-outline-primary" href="{% url 'lib_app:authors'%}"
+        role="button">Authors &raquo;</a>
+    <a class="btn btn-outline-primary" href="{% url 'lib_app:books'%}"
+        role="button">Books &raquo;</a>
+    </div>
+  </div>
+
+{% endblock page_header %}
+
+
+{% block content %}
+
+{% endblock content %}
+

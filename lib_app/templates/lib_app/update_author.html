@@ -1,0 +1,19 @@
+{% extends "lib_app/index.html" %}
+
+{% block page_header %}
+<h1>Update an author:</h1>
+{% endblock page_header %}
+
+{% block content %}
+
+<form action="{% url 'lib_app:update_author' author.id %}" method='post'>
+      <div class=" card mb-3 " >
+            <div class="card-body">
+                  {% csrf_token %}
+                  {{form.as_p}}
+                  <button name="submit" class="btn btn-primary">submit changes</button>
+            </div>
+      </div>
+</form>
+
+{% endblock content %}

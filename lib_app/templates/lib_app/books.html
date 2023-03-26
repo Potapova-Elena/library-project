@@ -1,0 +1,43 @@
+{% extends "lib_app/index.html" %}
+
+{% block page_header %}
+<div class="d-flex bd-highlight">
+    <div class="p-2 flex-grow-1 bd-highlight"><h1>Books</h1></div>
+    <div class="align-self-center">
+      <a href="{% url 'lib_app:add_book'%}">Add a new book</a>
+    </div>
+</div>
+{% endblock page_header %}
+
+{% block content %}
+
+
+{% for book in books %}
+    <div class="d-flex bd-highlight card mb-3 card-header"
+                 style="flex-direction: row; ">
+        <div class="p-2 flex-grow-1 bd-highlight w-50"> <h3 style="font-weight: 300">
+            <a href="{% url 'lib_app:view_book' book.id %}">
+              {{book.Title|linebreaksbr|wordwrap:50}} -
+              {% for author in book.Author.all %}
+              {{ author|linebreaksbr|wordwrap:50 }}
+              {% if not forloop.last %},
+              {% endif %}
+              {% endfor %}
+            </a></h3>
+        </div>
+        <div class="p-2 bd-highlight ">
+            <a class="btn btn-outline-primary" href="{% url 'lib_app:update_book' book.id %}"
+                role="button">Edit book</a>
+        </div>
+        <div class="p-2 bd-highlight ">
+          <form action="{% url 'lib_app:delete_book' book.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-outline-primary" >Delete book</button>
+          </form>
+        </div>
+    </div>
+    {% empty %}
+    <h3>There are no books yet.</h3>
+    {% endfor %}
+
+{% endblock content %}

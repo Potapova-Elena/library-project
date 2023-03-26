@@ -1,0 +1,53 @@
+{% extends "lib_app/index.html" %}
+{% block page_header %}
+{% endblock page_header %}
+{% block content %}
+
+<div class=" card mb-3 " >
+    <div class="d-flex bd-highlight card-header" style="flex-direction: row;">
+        <div class="p-2 flex-grow-1 bd-highlight w-50">
+            <h4>{{author}}</h4>
+        </div>
+        <div class="p-2 bd-highlight">
+              <form action="{% url 'lib_app:update_author' author.id %}" method="get">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-outline-primary">Edit author</button>
+              </form>
+        </div>
+        <div class="p-2 bd-highlight">
+              <form action="{% url 'lib_app:delete_author' author.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-outline-primary" >Delete author</button>
+              </form>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <p style="text-align: right">{{author.birth_date}}-{% if author.death_date %} {{author.death_date}} {% else %} ...{% endif %}</p>
+        {% if books.all %}
+        <p> Books: </p>
+
+            {% for book in books.all %}
+              <li>
+                <a href="{% url 'lib_app:view_book' book.id %}">
+                     {{ book.Title}}
+                </a>
+              </li>
+                    {% if not forloop.last %}
+                    {% endif %}
+
+            {% endfor %}
+
+        {% else %}
+        This author has no books yet.
+        {% endif %}
+
+    </div>
+
+
+
+
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends "lib_app/index.html" %}
+
+{% block page_header %}
+<h1>Delete a book:</h1>
+{% endblock page_header %}
+
+{% block content %}
+
+<form action="{% url 'lib_app:delete_book' book.id %}" method='post'>
+      {% csrf_token %}>
+      {{form.as_p}}
+</form>
+
+{% endblock content %}
