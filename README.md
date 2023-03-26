@@ -19,6 +19,7 @@ Test tasks in the direction of "Python Development" for IT BOOTCAMP (IT Academy)
   python -m venv lib_env
   ```
 После выполнения этой команды в папке с проектом должна появиться папка «lib_env».
+
 4.	Активизируйте  виртуальную среду командами:
   ```
   Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
