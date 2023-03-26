@@ -31,7 +31,7 @@ Test tasks in the direction of "Python Development" for IT BOOTCAMP (IT Academy)
   pip install -r requirements.txt
   ```
  
-6.	Создайте и с мигрируйте базу данных:
+6.	Создайте и мигрируйте базу данных:
   ```
   python manage.py makemigrations
   python manage.py migrate
